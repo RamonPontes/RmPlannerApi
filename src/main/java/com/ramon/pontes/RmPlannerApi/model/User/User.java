@@ -5,6 +5,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import java.util.Collection;
@@ -18,7 +19,7 @@ public class User implements UserDetails {
     private String username;
     private String password;
     private String email;
-    private String account_type;
+    private UserRole account_type;
 
     public int getId() {
         return id;
@@ -58,7 +59,8 @@ public class User implements UserDetails {
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return List.of();
+        if (this.account_type == UserRole.ADMIN) return List.of(new SimpleGrantedAuthority("ROLE_ADMIN"), new SimpleGrantedAuthority("ROLE_USER"));
+        else return List.of(new SimpleGrantedAuthority("ROLE_USER"));
     }
 
     public String getPassword() {
@@ -77,11 +79,11 @@ public class User implements UserDetails {
         this.email = email;
     }
 
-    public String getAccount_type() {
+    public UserRole getAccount_type() {
         return account_type;
     }
 
-    public void setAccount_type(String account_type) {
+    public void setAccount_type(UserRole account_type) {
         this.account_type = account_type;
     }
 }
