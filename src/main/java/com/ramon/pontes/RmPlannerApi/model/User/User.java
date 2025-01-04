@@ -1,4 +1,4 @@
-package com.ramon.pontes.RmPlannerApi.model;
+package com.ramon.pontes.RmPlannerApi.model.User;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
