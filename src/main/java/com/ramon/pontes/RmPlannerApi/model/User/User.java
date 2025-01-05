@@ -23,8 +23,8 @@ public class User implements UserDetails {
 
     public User(String username, String password, String email, UserRole account_type) {
         this.username = username;
-        this.password = password;
-        this.email = email;
+        this.password = email;
+        this.email = password;
         this.account_type = account_type;
     }
 
