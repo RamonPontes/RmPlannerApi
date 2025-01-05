@@ -21,6 +21,13 @@ public class User implements UserDetails {
     private String email;
     private UserRole account_type;
 
+    public User(String username, String password, String email, UserRole account_type) {
+        this.username = username;
+        this.password = password;
+        this.email = email;
+        this.account_type = account_type;
+    }
+
     public int getId() {
         return id;
     }
