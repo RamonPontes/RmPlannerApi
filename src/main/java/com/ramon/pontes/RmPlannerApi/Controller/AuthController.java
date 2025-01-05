@@ -2,6 +2,7 @@ package com.ramon.pontes.RmPlannerApi.Controller;
 
 import com.ramon.pontes.RmPlannerApi.dto.AuthDTO;
 import com.ramon.pontes.RmPlannerApi.dto.RegisterDTO;
+import com.ramon.pontes.RmPlannerApi.infra.security.TokenService;
 import com.ramon.pontes.RmPlannerApi.model.User.User;
 import com.ramon.pontes.RmPlannerApi.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,12 +21,17 @@ public class AuthController {
     @Autowired
     private UserRepository userRepository;
 
+    @Autowired
+    private TokenService tokenService;
+
     @PostMapping("/login")
     public ResponseEntity<?> authLogin(@RequestBody AuthDTO data) {
         var usernamePassword = new UsernamePasswordAuthenticationToken(data.email(), data.password());
         var auth = this.authenticationManager.authenticate(usernamePassword);
 
-        return ResponseEntity.ok().build();
+        var token = tokenService.generateToken((User) auth.getPrincipal());
+
+        return ResponseEntity.ok(token);
     }
 
     @PostMapping("/register")
