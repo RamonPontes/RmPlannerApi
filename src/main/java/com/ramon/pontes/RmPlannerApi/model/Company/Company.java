@@ -11,6 +11,7 @@ public class Company {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int company_id;
     private String name;
+    private int owner_id;
 
     public Company(String name) {
         this.name = name;
@@ -30,5 +31,13 @@ public class Company {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public int getOwner_id() {
+        return owner_id;
+    }
+
+    public void setOwner_id(int owner_id) {
+        this.owner_id = owner_id;
     }
 }
