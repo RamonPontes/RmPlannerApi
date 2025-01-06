@@ -1,7 +1,7 @@
 package com.ramon.pontes.RmPlannerApi.Controller;
 
-import com.ramon.pontes.RmPlannerApi.dto.AuthDTO;
-import com.ramon.pontes.RmPlannerApi.dto.RegisterDTO;
+import com.ramon.pontes.RmPlannerApi.dto.request.LoginRequest;
+import com.ramon.pontes.RmPlannerApi.dto.request.RegisterRequest;
 import com.ramon.pontes.RmPlannerApi.infra.security.TokenService;
 import com.ramon.pontes.RmPlannerApi.model.User.User;
 import com.ramon.pontes.RmPlannerApi.repository.UserRepository;
@@ -25,7 +25,7 @@ public class AuthController {
     private TokenService tokenService;
 
     @PostMapping("/login")
-    public ResponseEntity<?> authLogin(@RequestBody AuthDTO data) {
+    public ResponseEntity<?> authLogin(@RequestBody LoginRequest data) {
         var usernamePassword = new UsernamePasswordAuthenticationToken(data.email(), data.password());
         var auth = this.authenticationManager.authenticate(usernamePassword);
 
@@ -35,7 +35,7 @@ public class AuthController {
     }
 
     @PostMapping("/register")
-    public ResponseEntity<?> authRegister(@RequestBody RegisterDTO data) {
+    public ResponseEntity<?> authRegister(@RequestBody RegisterRequest data) {
         if (this.userRepository.findByEmail(data.email()) != null) return ResponseEntity.badRequest().build();
 
         String encryptedPassword = new BCryptPasswordEncoder().encode(data.password());
