@@ -24,7 +24,7 @@ public class TokenService {
             Algorithm algorithm = Algorithm.HMAC256(secretKey);
 
             return JWT.create()
-                    .withSubject("RmPlannerAPI")
+                    .withIssuer("RmPlannerAPI")
                     .withSubject(user.getEmail())
                     .withExpiresAt(genExpirationDate())
                     .sign(algorithm);
