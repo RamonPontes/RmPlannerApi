@@ -13,8 +13,9 @@ public class Company {
     private String name;
     private int owner_id;
 
-    public Company(String name) {
+    public Company(String name, int owner_id) {
         this.name = name;
+        this.owner_id = owner_id;
     }
 
     public int getCompany_id() {
