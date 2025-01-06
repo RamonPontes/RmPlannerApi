@@ -2,6 +2,7 @@ package com.ramon.pontes.RmPlannerApi.Controller;
 
 import com.ramon.pontes.RmPlannerApi.dto.request.LoginRequest;
 import com.ramon.pontes.RmPlannerApi.dto.request.RegisterRequest;
+import com.ramon.pontes.RmPlannerApi.dto.response.LoginResponse;
 import com.ramon.pontes.RmPlannerApi.infra.security.TokenService;
 import com.ramon.pontes.RmPlannerApi.model.User.User;
 import com.ramon.pontes.RmPlannerApi.repository.UserRepository;
@@ -31,7 +32,7 @@ public class AuthController {
 
         var token = tokenService.generateToken((User) auth.getPrincipal());
 
-        return ResponseEntity.ok(token);
+        return ResponseEntity.ok(new LoginResponse(token));
     }
 
     @PostMapping("/register")
