@@ -12,6 +12,10 @@ public class Company {
     private int company_id;
     private String name;
 
+    public Company(String name) {
+        this.name = name;
+    }
+
     public int getCompany_id() {
         return company_id;
     }
