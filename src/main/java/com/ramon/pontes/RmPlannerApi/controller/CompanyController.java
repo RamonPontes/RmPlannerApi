@@ -2,7 +2,10 @@ package com.ramon.pontes.RmPlannerApi.controller;
 
 import com.ramon.pontes.RmPlannerApi.dto.request.company.CreateCompanyRequest;
 import com.ramon.pontes.RmPlannerApi.model.Company.Company;
+import com.ramon.pontes.RmPlannerApi.model.User.User;
+import com.ramon.pontes.RmPlannerApi.repository.UserRepository;
 import com.ramon.pontes.RmPlannerApi.service.CompanyService;
+import com.ramon.pontes.RmPlannerApi.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -17,9 +20,17 @@ public class CompanyController {
     @Autowired
     CompanyService companyService;
 
+    @Autowired
+    UserService userService;
+
+    @Autowired
+    UserRepository userRepository;
+
     @PostMapping
     public ResponseEntity<?> CreateCompany(@RequestBody CreateCompanyRequest data) {
-        companyService.CreateCompany(new Company(data.name()));
+        User user = userRepository.findUserByEmail(userService.getAuthenticatedUserEmail());
+
+        companyService.CreateCompany(new Company(data.name(), user.getUser_id()));
         return ResponseEntity.ok().build();
     }
 }
