@@ -1,9 +1,6 @@
 package com.ramon.pontes.RmPlannerApi.model.Company;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
 @Entity
 public class Company {
@@ -11,11 +8,13 @@ public class Company {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int company_id;
     private String name;
-    private int owner_id;
+    private int owner;
 
-    public Company(String name, int owner_id) {
+    public Company() {}
+
+    public Company(String name, int owner) {
         this.name = name;
-        this.owner_id = owner_id;
+        this.owner = owner;
     }
 
     public int getCompany_id() {
@@ -34,11 +33,11 @@ public class Company {
         this.name = name;
     }
 
-    public int getOwner_id() {
-        return owner_id;
+    public int getOwner() {
+        return owner;
     }
 
-    public void setOwner_id(int owner_id) {
-        this.owner_id = owner_id;
+    public void setOwner(int owner) {
+        this.owner = owner;
     }
 }
