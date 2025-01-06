@@ -1,7 +1,7 @@
-package com.ramon.pontes.RmPlannerApi.Controller;
+package com.ramon.pontes.RmPlannerApi.controller;
 
-import com.ramon.pontes.RmPlannerApi.dto.request.LoginRequest;
-import com.ramon.pontes.RmPlannerApi.dto.request.RegisterRequest;
+import com.ramon.pontes.RmPlannerApi.dto.request.auth.LoginRequest;
+import com.ramon.pontes.RmPlannerApi.dto.request.auth.RegisterRequest;
 import com.ramon.pontes.RmPlannerApi.dto.response.LoginResponse;
 import com.ramon.pontes.RmPlannerApi.infra.security.TokenService;
 import com.ramon.pontes.RmPlannerApi.model.User.User;

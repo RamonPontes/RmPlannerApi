@@ -1,4 +1,4 @@
-package com.ramon.pontes.RmPlannerApi.dto.request;
+package com.ramon.pontes.RmPlannerApi.dto.request.auth;
 
 import com.ramon.pontes.RmPlannerApi.model.User.UserRole;
 
