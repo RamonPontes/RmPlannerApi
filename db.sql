@@ -9,5 +9,5 @@ CREATE TABLE user (
 CREATE TABLE company (
     company_id BIGINT AUTO_INCREMENT PRIMARY KEY,
     owner_id BIGINT NOT NULL,
-    name VARCHAR(255) NOT NULL,
+    name VARCHAR(255) NOT NULL
 )
