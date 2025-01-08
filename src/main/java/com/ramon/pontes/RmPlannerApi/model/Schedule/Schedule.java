@@ -1,6 +1,7 @@
 package com.ramon.pontes.RmPlannerApi.model.Schedule;
 
 import jakarta.persistence.*;
+import org.springframework.cglib.core.Local;
 
 import java.time.LocalDateTime;
 
@@ -11,14 +12,24 @@ public class Schedule {
     private int schedule_id;
     private int company_id;
     private int user_id;
+    private LocalDateTime dateTime;
     @Column(insertable = false, updatable = false)
     private LocalDateTime create_datetime;
 
     public Schedule() { }
 
-    public Schedule(int company_id, int user_id) {
+    public Schedule(int company_id, int user_id, LocalDateTime dateTime) {
         this.company_id = company_id;
         this.user_id = user_id;
+        this.dateTime = dateTime;
+    }
+
+    public LocalDateTime getDateTime() {
+        return dateTime;
+    }
+
+    public void setDateTime(LocalDateTime dateTime) {
+        this.dateTime = dateTime;
     }
 
     public int getSchedule_id() {

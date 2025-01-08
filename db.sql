@@ -8,13 +8,14 @@ CREATE TABLE user (
 
 CREATE TABLE company (
     company_id BIGINT AUTO_INCREMENT PRIMARY KEY,
-    owner BIGINT NOT NULL,
+    owner_id BIGINT NOT NULL,
     name VARCHAR(255) NOT NULL
-)
+);
 
 CREATE TABLE schedule (
     schedule_id BIGINT AUTO_INCREMENT PRIMARY KEY,
     company_id BIGINT NOT NULL,
     user_id BIGINT NOT NULL,
+    date_time DATETIME NOT NULL,
     create_datetime DATETIME DEFAULT CURRENT_TIMESTAMP
 )

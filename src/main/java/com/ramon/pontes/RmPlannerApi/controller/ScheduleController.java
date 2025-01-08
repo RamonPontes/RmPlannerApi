@@ -35,7 +35,7 @@ public class ScheduleController {
     public ResponseEntity<?> registerSchedule(@RequestBody RegisterScheduleRequest data) {
         User user = userRepository.findUserByEmail(userService.getAuthenticatedUserEmail());
 
-        scheduleService.registerSchedule(new Schedule(data.company_id(), user.getUser_id()));
+        scheduleService.registerSchedule(new Schedule(data.company_id(), user.getUser_id(), data.dateTime()));
 
         return ResponseEntity.ok().build();
     }
