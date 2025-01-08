@@ -11,16 +11,17 @@ public class Schedule {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int schedule_id;
     private int company_id;
-    private int user_id;
+    @Column(name = "user_id")
+    private int userId;
     private LocalDateTime dateTime;
     @Column(insertable = false, updatable = false)
     private LocalDateTime create_datetime;
 
     public Schedule() { }
 
-    public Schedule(int company_id, int user_id, LocalDateTime dateTime) {
+    public Schedule(int company_id, int userId, LocalDateTime dateTime) {
         this.company_id = company_id;
-        this.user_id = user_id;
+        this.userId = userId;
         this.dateTime = dateTime;
     }
 
@@ -48,12 +49,12 @@ public class Schedule {
         this.company_id = company_id;
     }
 
-    public int getUser_id() {
-        return user_id;
+    public int getUserId() {
+        return userId;
     }
 
-    public void setUser_id(int user_id) {
-        this.user_id = user_id;
+    public void setUserId(int userId) {
+        this.userId = userId    ;
     }
 
     public LocalDateTime getCreate_datetime() {
